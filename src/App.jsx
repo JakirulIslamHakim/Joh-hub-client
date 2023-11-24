@@ -1,8 +1,12 @@
-
 import "./App.css";
+import MainLayout from "./Layout/MainLayout";
 
 function App() {
-  return <div className="text-5xl">hello i a m hakim</div>;
+  return (
+    <div>
+      <MainLayout></MainLayout>
+    </div>
+  );
 }
 
 export default App;

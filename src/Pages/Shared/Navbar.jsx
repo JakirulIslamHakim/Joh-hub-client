@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Navbar = () => {
   const navLink = (
@@ -32,8 +32,8 @@ const Navbar = () => {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className=" shadow-2xl shadow-">
-          <div className="w-full navbar bg-base-300">
+        <div className=" shadow-2xl ">
+          <div className="w-full navbar bg-base-300 border-b border-black">
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"
@@ -56,20 +56,20 @@ const Navbar = () => {
               </label>
             </div>
             <div className=" max-w-7xl w-full mx-auto flex justify-between">
-              <div className="flex- px-2 mx-2 text-left text-4xl font-bold w-28 ">
+              <div className="flex- px-2 mx-2 text-left text-4xl font-bold w-20 lg:w-24  ">
                   <img
-                    className="w-full rounded-full"
+                    className="w-full rounded-full lg:ml-6"
                     src="https://i.ibb.co/G95bnRK/Screenshot-29.png"
                     alt=""
                   />
               </div>
-              <ul className="pr-7">
-                <li className="lg:hidden btn text-xl font-bold">
+              <ul className="pr-2">
+                <li className="lg:hidden btn text-base font-bold">
                   <NavLink to={"/login"}>Loginxz</NavLink>
                 </li>
               </ul>
               <div className="flex-none hidden lg:block">
-                <ul className="menu menu-horizontal text-base font-bold">
+                <ul className="menu menu-horizontal text-base font-bold ">
                   {/* Navbar menu content here */}
                   {navLink}
                 </ul>
@@ -84,14 +84,15 @@ const Navbar = () => {
         </div>
         {/* Page content here */}
         {/* Content */}
+        {/* {children} */}
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-50">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-72 min-h-full bg-base-200 text-base font-bold text-center">
+        <ul className="menu p-4 w-72 min-h-full bg-base-200 text-base font-bold text-center ">
           {/* Sidebar content here */}
           {navLink}
         </ul>

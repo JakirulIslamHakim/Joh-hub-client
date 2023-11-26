@@ -1,6 +1,19 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
+  const { logoutUser } = useAuth();
+
+  const handleLogout = () => {
+    logoutUser()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const navLink = (
     <>
       <li>
@@ -20,6 +33,11 @@ const Navbar = () => {
       </li>
       <li className="hidden lg:block">
         <NavLink to={"/login"}>Login</NavLink>
+      </li>
+      <li className="hidden lg:block">
+        <NavLink onClick={handleLogout} to={"/logout"}>
+          logout
+        </NavLink>
       </li>
     </>
   );
@@ -57,11 +75,11 @@ const Navbar = () => {
             </div>
             <div className=" max-w-7xl w-full mx-auto flex justify-between">
               <div className="flex- px-2 mx-2 text-left text-4xl font-bold w-20 lg:w-24  ">
-                  <img
-                    className="w-full rounded-full lg:ml-6"
-                    src="https://i.ibb.co/G95bnRK/Screenshot-29.png"
-                    alt=""
-                  />
+                <img
+                  className="w-full rounded-full lg:ml-6"
+                  src="https://i.ibb.co/G95bnRK/Screenshot-29.png"
+                  alt=""
+                />
               </div>
               <ul className="pr-2">
                 <li className="lg:hidden btn text-base font-bold">

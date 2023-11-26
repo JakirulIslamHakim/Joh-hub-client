@@ -2,14 +2,41 @@ import Lottie from "lottie-react";
 import loginAnimation from "../../assets/Image/login.json";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import useAuth from "../../Hook/useAuth";
 
 const Login = () => {
+  const { loginUser, googleLogin } = useAuth();
+  const emailRef = useRef();
+  // console.log(emailRef.current.emailRef);
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
+    // login user
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -35,6 +62,7 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                ref={emailRef}
                 type="email"
                 name="email"
                 placeholder="email"
@@ -69,7 +97,10 @@ const Login = () => {
                 <p className="text-xl text-center font-medium mb-1">
                   Login with
                 </p>
-                <button className="btn w-full text-xl font-bold bg-gray-500  text-white hover:text-black">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="btn w-full text-xl font-bold bg-gray-500  text-white hover:text-black"
+                >
                   {" "}
                   <span className="text-3xl">
                     <FcGoogle />

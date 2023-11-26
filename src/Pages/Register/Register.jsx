@@ -1,8 +1,17 @@
 import { NavLink } from "react-router-dom";
 import Lottie from "lottie-react";
 import registerAnimation from "../../assets/Image/RegisterAnimation.json";
+import useAuth from "../../Hook/useAuth";
+import { useEffect, useRef } from "react";
 
 const Register = () => {
+  const { register } = useAuth();
+  const nameRef = useRef();
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -11,6 +20,15 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log({ name, image, email, password });
+
+    //  create account
+    register(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -36,6 +54,7 @@ const Register = () => {
                 <span className="label-text">Name</span>
               </label>
               <input
+                ref={nameRef}
                 type="text"
                 name="name"
                 placeholder="name"

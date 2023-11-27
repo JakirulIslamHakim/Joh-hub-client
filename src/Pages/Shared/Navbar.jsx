@@ -20,6 +20,9 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
+        <NavLink to={"/findJob"}>Find Job</NavLink>
+      </li>
+      <li>
         <NavLink to={"/addJob"}>Add job</NavLink>
       </li>
       <li>
@@ -48,7 +51,7 @@ const Navbar = () => {
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
+      <div className="drawer-content flex flex-col bg-white">
         {/* Navbar */}
         <div className=" shadow-2xl ">
           <div className="w-full navbar bg-base-300 border-b border-black">

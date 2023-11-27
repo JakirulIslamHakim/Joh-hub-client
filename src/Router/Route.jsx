@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import AddJob from "../Components/AddJob";
 import HomePage from "../Layout/HomePage";
 import MainLayout from "../Layout/MainLayout";
 import FindJob from "../Pages/FindJob/FindJob";
 import Error from "../Pages/Error/Error";
+import PostAJob from "../Pages/PostAJob/PostAJob";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "addJob",
-        element: <AddJob></AddJob>,
+        element: <PostAJob></PostAJob>,
       },
     ],
   },

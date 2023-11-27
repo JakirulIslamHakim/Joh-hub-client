@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/Image/errorPage.json";
-import "./error.css";
+// import "./error.css";
 import { NavLink } from "react-router-dom";
 // import loginAnimation from "../../assets/Image/RegisterAnimation.json";
 
@@ -11,7 +11,7 @@ const Error = () => {
         <Lottie animationData={loginAnimation} loop={true} autoplay={true} />
       </div>
       <div className="text-center">
-        <button className="btn text-red-700 text-xl font-bold">
+        <button className="btn text-red-700 text-xl font-bold border-2 border-red-600">
           <NavLink to={-1} replace={true}>
             Go Back
           </NavLink>

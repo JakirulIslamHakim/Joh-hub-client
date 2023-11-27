@@ -37,6 +37,8 @@ const AuthProver = ({ children }) => {
   // user exist observer
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
       console.log(currentUser);
     });
     return () => unSubscribe();

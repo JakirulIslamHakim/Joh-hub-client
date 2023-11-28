@@ -34,6 +34,7 @@ const PostAJob = () => {
           onSubmit={handlePostJob}
           className="card-body w-full md:w-3/4 mx-auto p-2 md:p-6"
         >
+          <h2 className="text-3xl font-bold text-center italic">Post job</h2>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -79,7 +80,7 @@ const PostAJob = () => {
               <span className="label-text">Category</span>
             </label>
             <select
-              defaultValue={""} 
+              defaultValue={""}
               name="category"
               className="select select-bordered w-full"
             >
@@ -129,8 +130,10 @@ const PostAJob = () => {
             ></textarea>
           </div>
 
-          <div className="form-control mt-6">
-            <button className="btn btn-primary">Post A Job</button>
+          <div className="form-control mt-6 border rounded-lg border-black ">
+            <button className="btn  bg-black font-bold text-xl text-white hover:text-black ">
+              Post A Job
+            </button>
           </div>
         </form>
       </div>

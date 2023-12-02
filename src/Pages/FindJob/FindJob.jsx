@@ -51,7 +51,7 @@ const FindJob = () => {
           </TabList>
 
           <TabPanel>
-            <div className="grid md:grid-cols-2 gap-3 ">
+            <div className="grid md:grid-cols-2 gap-12 mt-9 ">
               {categoryByJob.map((job) => (
                 <Card key={job._id} job={job}></Card>
               ))}
@@ -59,21 +59,21 @@ const FindJob = () => {
           </TabPanel>
 
           <TabPanel>
-            <div className="grid md:grid-cols-2 gap-3 ">
+            <div className="grid md:grid-cols-2 gap-12 mt-9 ">
               {categoryByJob.map((job) => (
                 <Card key={job._id} job={job}></Card>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid md:grid-cols-2 gap-3 ">
+            <div className="grid md:grid-cols-2 gap-12 mt-9 ">
               {categoryByJob.map((job) => (
                 <Card key={job._id} job={job}></Card>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid md:grid-cols-2 gap-3 ">
+            <div className="grid md:grid-cols-2 gap-12 mt-9 ">
               {categoryByJob.map((job) => (
                 <Card key={job._id} job={job}></Card>
               ))}

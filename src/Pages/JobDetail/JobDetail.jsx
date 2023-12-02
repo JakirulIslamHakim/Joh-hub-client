@@ -72,19 +72,19 @@ const JobDetail = () => {
               </div>
               <p className="font-semibold">
                 <span className="md:text-base ">Employer Email : </span>
-                {employer_email}{" "}
+                {employer_email}
               </p>
               <p className="font-semibold">
                 <span className="md:text-base ">Job Title : </span>
-                {job_title}{" "}
+                {job_title}
               </p>
               <p className="font-semibold">
                 <span className="md:text-base ">Deadline : </span>
-                {deadline}{" "}
+                {deadline}
               </p>
               <p className="font-semibold">
                 <span className="md:text-base ">Price Range : </span>
-                {min_price}$ - {max_price}${" "}
+                {min_price}$ - {max_price}$
               </p>
               <p className="font-semibold">
                 <span className="md:text-base ">Description : </span>
@@ -152,7 +152,6 @@ const JobDetail = () => {
                   />
                 </div>
                 <button className="btn w-full mt-3" type="submit">
-                  {" "}
                   Bid on the project
                 </button>
               </form>

@@ -26,7 +26,7 @@ const Card = ({ job }) => {
   // };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl border-2">
       <div className="card-body ">
         <div className="avatar flex items-center  gap-3">
           <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

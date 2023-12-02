@@ -15,12 +15,12 @@ const PostAJob = () => {
     const job_title = from.jobTitle.value;
     const deadline = from.deadline.value;
     const category = from.category.value;
-    const minimumSalary = from.minimumSalary.value;
-    const maximumSalary = from.maximumSalary.value;
+    const min_price = from.minimumSalary.value;
+    const max_price = from.maximumSalary.value;
     const description = from.description.value;
 
-    const minimumSalaryNum = Number(minimumSalary);
-    const maximumSalaryNum = Number(maximumSalary);
+    const minimumSalaryNum = Number(min_price);
+    const maximumSalaryNum = Number(max_price);
 
     if (minimumSalaryNum > maximumSalaryNum) {
       return console.log("error");
@@ -34,18 +34,17 @@ const PostAJob = () => {
     // console.log(postsCurrentTime);
 
     const jobData = {
-     employer_email,
-     job_title,
+      employer_email,
+      job_title,
       deadline,
       category,
-      minimumSalary,
-      maximumSalary,
+      min_price,
+      max_price,
       description,
       postsCurrentTime,
     };
     // console.log(jobData);
-    axios.post("employer/postJob", jobData)
-    .then((res) => {
+    axios.post("employer/postJob", jobData).then((res) => {
       console.log(res);
     });
   };
@@ -153,6 +152,7 @@ const PostAJob = () => {
               className="textarea textarea-bordered"
               placeholder="Description"
               maxLength="500"
+              minLength={20}
               required
             ></textarea>
           </div>

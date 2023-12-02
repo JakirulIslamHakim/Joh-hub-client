@@ -6,12 +6,14 @@ import MainLayout from "../Layout/MainLayout";
 import FindJob from "../Pages/FindJob/FindJob";
 import Error from "../Pages/Error/Error";
 import PostAJob from "../Pages/PostAJob/PostAJob";
+import JobDetail from "../Pages/JobDetail/JobDetail";
+import MyPostedJobs from "../Pages/MyPostedJobs/MyPostedJobs";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
         path: "addJob",
         element: <PostAJob></PostAJob>,
       },
+      {
+        path: "bidNow/:_id",
+        element:<JobDetail></JobDetail>
+      },
+      {
+        path:'myPostedJobs',
+        element: <MyPostedJobs></MyPostedJobs>
+      }
     ],
   },
   {

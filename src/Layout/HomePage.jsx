@@ -1,4 +1,3 @@
-import AddJob from "../Components/AddJob";
 import WorkYourWay from "../Components/WorkYourWay/WorkYourWay";
 import Home from "../Pages/Home/Home";
 

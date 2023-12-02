@@ -1,94 +1,139 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-// import "react-tabs/style/react-tabs.css";
-// import 'react-tabs/style/react-tabs.scss';
-import "./addJob.css";
-import Container from "../utils/Container";
+import { TabPanel } from "react-tabs";
 
-const AddJob = () => {
-  return (
-    <Container>
-      <div className="border border-red-600">
-        <Tabs>
-          <TabList>
-            <Tab className={"text-3xl"}><button className="btn btn-primary">Title 1</button> </Tab>
-            <Tab className={"text-3xl"}>Title 2</Tab>
-            <Tab className={"text-3xl"}>Title 3</Tab>
-            <Tab className={"text-3xl"}>Title 4</Tab>
-            <Tab className={"text-3xl"}>Title 5</Tab>
-          </TabList>
-
-          <TabPanel>
-            <h2>This is hakim</h2>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit
-              modi eligendi ea similique fugiat, sunt quae voluptas, nisi ullam
-              vitae iusto facere cumque corrupti, esse labore voluptatibus quis!
-              Nobis earum quisquam dolorum consequuntur nesciunt. Debitis ut
-              quos labore alias impedit at! Sunt aut, fugit dolores vero saepe
-              debitis laboriosam ex unde veniam rerum dicta quisquam
-              exercitationem similique assumenda repellat eaque aliquam
-              obcaecati ipsa, dolore labore! Pariatur repudiandae mollitia
-              possimus nemo aliquid. Quisquam minima quibusdam eveniet
-              temporibus hic quia placeat libero numquam dolor, nam, ad sed
-              pariatur itaque vitae amet similique excepturi dolore odio?
-              Quisquam expedita consequuntur voluptates, fugiat inventore
-              doloribus harum impedit reiciendis nostrum velit exercitationem
-              perspiciatis suscipit minus quae? Quaerat blanditiis sunt
-              praesentium accusantium non deleniti, hic quos esse ut asperiores,
-              eum minima minus laborum itaque. Aspernatur, error. Amet corporis,
-              esse velit id molestiae sed corrupti veniam sunt quibusdam
-              aliquid, eveniet sequi temporibus praesentium ea ipsam blanditiis
-              natus eius consequuntur earum dolores necessitatibus, est
-              voluptates! Eligendi magnam dicta similique, voluptatem officia
-              repudiandae praesentium maxime dolores dolorum dolore cum nobis?
-              Harum repudiandae similique dolorum ea! Et iste sint dolore
-              quaerat suscipit eius numquam corporis eligendi, sequi itaque enim
-              obcaecati sunt pariatur, quae ab praesentium illo doloremque
-              nostrum nam impedit officiis.
-            </p>
-          </TabPanel>
-          <TabPanel>
-            <h2>THis is sakinm</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reiciendis voluptatum minima iste. Vel eveniet laudantium
-              perspiciatis maiores ratione beatae non rerum voluptatem aliquam
-              fugit. Itaque, quas, autem cupiditate pariatur laboriosam nam vero
-              provident quos aut omnis vitae. Iste quia repellendus, officia et
-              in sequi! Accusamus libero deserunt veniam modi, nisi incidunt.
-              Inventore consectetur nam architecto officia maxime ullam
-              voluptatem necessitatibus aperiam recusandae quas alias quaerat,
-              dicta, at libero! At, unde quis assumenda eveniet fugiat, debitis
-              impedit obcaecati, cumque saepe molestias quam vitae similique
-              officia. Repudiandae, quisquam. Repudiandae placeat porro
-              similique cupiditate consequatur fugiat quo nulla quas?
-              Voluptates, quia id nobis enim molestiae vitae, commodi voluptate
-              tempora quam hic, cumque asperiores delectus et quae earum! Sint
-              odio explicabo, dolore quidem ea ducimus dignissimos iusto enim
-              eaque quis, voluptatibus voluptatum voluptates atque! Perspiciatis
-              velit sapiente asperiores, vero dolores ex reiciendis non laborum
-              architecto dolorem maxime, vitae tenetur, iusto atque quis fuga
-              minus commodi. Reprehenderit fugit quod officiis numquam iure, quo
-              eius obcaecati, enim quas dignissimos, neque quaerat blanditiis
-              odio ea adipisci praesentium vitae. Aspernatur quae dignissimos
-              voluptatibus libero voluptas neque ullam facere quam, quia
-              possimus non velit dolor dolore. Maxime aperiam doloribus quaerat
-              sunt placeat recusandae, sit accusamus ipsum totam modi nemo.
-            </p>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 2</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 2</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 2</h2>
-          </TabPanel>
-        </Tabs>
+<TabPanel>
+<div className={"grid grid-cols-2 gap-8 mt-10"}>
+  {/* card 1 */}
+  <div className="card bg-base-100 shadow-xl">
+    <div className="card-body ">
+      <div className="avatar flex items-center  gap-3">
+        <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+        <p>
+          Posted by <br /> <span>Jakirul islam hakim</span>
+        </p>
       </div>
-    </Container>
-  );
-};
-
-export default AddJob;
+      <div className="border p-2 m-2 rounded-lg space-y-2">
+        <h2 className="text-3xl font-bold text-center borde">
+          Web Development
+        </h2>{" "}
+        <hr className="w-2/3 shadow-lg border-black mx-auto" />
+        <p>Date : 19-8-22</p>
+        <p>Salary : 20k - 50k </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Pariatur, sunt aliquam atque magni ut animi quidem porro
+          eligendi in laudantium nisi eius illo itaque laboriosam
+          unde ratione est? Sint, itaque accusamus, unde in amet
+          impedit illo provident odio veritatis consequatur maxime
+          neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
+          adipisci molestiae iure ut reprehenderit amet quasi animi
+          beatae harum quod.
+        </p>
+        <div className="card-actions justify-center">
+          <button className="btn btn-primary">Bid Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* card 1 */}
+  <div className="card bg-base-100 shadow-xl">
+    <div className="card-body">
+      <div className="avatar flex items-center  gap-3">
+        <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+        <p>
+          Posted by <br /> <span>Jakirul islam hakim</span>
+        </p>
+      </div>
+      <div className="border p-2 m-2 rounded-lg space-y-2">
+        <h2 className="text-3xl font-bold text-center border-b">
+          Web Development
+        </h2>
+        <p>Date : 19-8-22</p>
+        <p>Salary : 20k - 50k </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Pariatur, sunt aliquam atque magni ut animi quidem porro
+          eligendi in laudantium nisi eius illo itaque laboriosam
+          unde ratione est? Sint, itaque accusamus, unde in amet
+          impedit illo provident odio veritatis consequatur maxime
+          neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
+          adipisci molestiae iure ut reprehenderit amet quasi animi
+          beatae harum quod.
+        </p>
+        <div className="card-actions justify-center">
+          <button className="btn btn-primary">Bid Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* card 1 */}
+  <div className="card bg-base-100 shadow-xl">
+    <div className="card-body">
+      <div className="avatar flex items-center  gap-3">
+        <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+        <p>
+          Posted by <br /> <span>Jakirul islam hakim</span>
+        </p>
+      </div>
+      <div className="border p-2 m-2 rounded-lg space-y-2">
+        <h2 className="text-3xl font-bold text-center border-b">
+          Web Development
+        </h2>
+        <p>Date : 19-8-22</p>
+        <p>Salary : 20k - 50k </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Pariatur, sunt aliquam atque magni ut animi quidem porro
+          eligendi in laudantium nisi eius illo itaque laboriosam
+          unde ratione est? Sint, itaque accusamus, unde in amet
+          impedit illo provident odio veritatis consequatur maxime
+          neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
+          adipisci molestiae iure ut reprehenderit amet quasi animi
+          beatae harum quod.
+        </p>
+        <div className="card-actions justify-center">
+          <button className="btn btn-primary">Bid Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* card 1 */}
+  <div className="card bg-base-100 shadow-xl">
+    <div className="card-body">
+      <div className="avatar flex items-center  gap-3">
+        <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+        <p>
+          Posted by <br /> <span>Jakirul islam hakim</span>
+        </p>
+      </div>
+      <div className="border p-2 m-2 rounded-lg space-y-2">
+        <h2 className="text-3xl font-bold text-center border-b">
+          Web Development
+        </h2>
+        <p>Date : 19-8-22</p>
+        <p>Salary : 20k - 50k </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Pariatur, sunt aliquam atque magni ut animi quidem porro
+          eligendi in laudantium nisi eius illo itaque laboriosam
+          unde ratione est? Sint, itaque accusamus, unde in amet
+          impedit illo provident odio veritatis consequatur maxime
+          neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
+          adipisci molestiae iure ut reprehenderit amet quasi animi
+          beatae harum quod.
+        </p>
+        <div className="card-actions justify-center">
+          <button className="btn btn-primary">Bid Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</TabPanel>

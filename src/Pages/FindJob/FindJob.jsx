@@ -1,159 +1,83 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Container from "../../utils/Container";
+import { useEffect, useState } from "react";
+import useAxios from "../../Hook/useAxios";
+import Card from "../../Components/Card/Card";
 
 const FindJob = () => {
+  const [category, setCategory] = useState("");
+  const [categoryByJob, setCategoryByJob] = useState([]);
+  const axios = useAxios();
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/api/v1/categories/${category}`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }, [category]);
+
+
+  useEffect(() => {
+    if (category === "") {
+      axios
+        .get(`/categories`)
+        .then((res) => {
+          setCategoryByJob(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .get(`/categories/${category}`)
+        .then((res) => {
+          setCategoryByJob(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [category, axios]);
+
   return (
     <Container>
       <div>
         <Tabs>
           <TabList>
-            <Tab>Web Development</Tab>
-            <Tab>Digital Marketing</Tab>
-            <Tab>Graphics Design</Tab>
+            <Tab onClick={() => setCategory("")}>All Job</Tab>
+            <Tab onClick={() => setCategory("web-development")}> Web Development </Tab>
+            <Tab onClick={() => setCategory("digital-marketing")}> Digital Marketing </Tab>
+            <Tab onClick={() => setCategory("graphic-design")}> Graphics Design </Tab>
           </TabList>
 
           <TabPanel>
-            <div className={"grid grid-cols-2 gap-8 mt-10"}>
-              {/* card 1 */}
-              <div className="card bg-base-100 shadow-xl">
-                <div className="card-body ">
-                  <div className="avatar flex items-center  gap-3">
-                    <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                    <p>
-                      Posted by <br /> <span>Jakirul islam hakim</span>
-                    </p>
-                  </div>
-                  <div className="border p-2 m-2 rounded-lg space-y-2">
-                    <h2 className="text-3xl font-bold text-center borde">
-                      Web Development
-                    </h2> <hr className="w-2/3 shadow-lg border-black mx-auto"/>
-                    <p>Date : 19-8-22</p>
-                    <p>Salary : 20k - 50k </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur, sunt aliquam atque magni ut animi quidem porro
-                      eligendi in laudantium nisi eius illo itaque laboriosam
-                      unde ratione est? Sint, itaque accusamus, unde in amet
-                      impedit illo provident odio veritatis consequatur maxime
-                      neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
-                      adipisci molestiae iure ut reprehenderit amet quasi animi
-                      beatae harum quod.
-                    </p>
-                    <div className="card-actions justify-center">
-                      <button className="btn btn-primary">Bid Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* card 1 */}
-              <div className="card bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <div className="avatar flex items-center  gap-3">
-                    <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                    <p>
-                      Posted by <br /> <span>Jakirul islam hakim</span>
-                    </p>
-                  </div>
-                  <div className="border p-2 m-2 rounded-lg space-y-2">
-                    <h2 className="text-3xl font-bold text-center border-b">
-                      Web Development
-                    </h2>
-                    <p>Date : 19-8-22</p>
-                    <p>Salary : 20k - 50k </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur, sunt aliquam atque magni ut animi quidem porro
-                      eligendi in laudantium nisi eius illo itaque laboriosam
-                      unde ratione est? Sint, itaque accusamus, unde in amet
-                      impedit illo provident odio veritatis consequatur maxime
-                      neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
-                      adipisci molestiae iure ut reprehenderit amet quasi animi
-                      beatae harum quod.
-                    </p>
-                    <div className="card-actions justify-center">
-                      <button className="btn btn-primary">Bid Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* card 1 */}
-              <div className="card bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <div className="avatar flex items-center  gap-3">
-                    <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                    <p>
-                      Posted by <br /> <span>Jakirul islam hakim</span>
-                    </p>
-                  </div>
-                  <div className="border p-2 m-2 rounded-lg space-y-2">
-                    <h2 className="text-3xl font-bold text-center border-b">
-                      Web Development
-                    </h2>
-                    <p>Date : 19-8-22</p>
-                    <p>Salary : 20k - 50k </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur, sunt aliquam atque magni ut animi quidem porro
-                      eligendi in laudantium nisi eius illo itaque laboriosam
-                      unde ratione est? Sint, itaque accusamus, unde in amet
-                      impedit illo provident odio veritatis consequatur maxime
-                      neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
-                      adipisci molestiae iure ut reprehenderit amet quasi animi
-                      beatae harum quod.
-                    </p>
-                    <div className="card-actions justify-center">
-                      <button className="btn btn-primary">Bid Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* card 1 */}
-              <div className="card bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <div className="avatar flex items-center  gap-3">
-                    <div className="w-14 ml-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                    <p>
-                      Posted by <br /> <span>Jakirul islam hakim</span>
-                    </p>
-                  </div>
-                  <div className="border p-2 m-2 rounded-lg space-y-2">
-                    <h2 className="text-3xl font-bold text-center border-b">
-                      Web Development
-                    </h2>
-                    <p>Date : 19-8-22</p>
-                    <p>Salary : 20k - 50k </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur, sunt aliquam atque magni ut animi quidem porro
-                      eligendi in laudantium nisi eius illo itaque laboriosam
-                      unde ratione est? Sint, itaque accusamus, unde in amet
-                      impedit illo provident odio veritatis consequatur maxime
-                      neque! Culpa sunt obcaecati quas reiciendis, rem, fugiat
-                      adipisci molestiae iure ut reprehenderit amet quasi animi
-                      beatae harum quod.
-                    </p>
-                    <div className="card-actions justify-center">
-                      <button className="btn btn-primary">Bid Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="grid md:grid-cols-2 gap-3 ">
+              {categoryByJob.map((job) => (
+                <Card key={job._id} job={job}></Card>
+              ))}
+            </div>
+          </TabPanel>
+
+          <TabPanel>
+            <div className="grid md:grid-cols-2 gap-3 ">
+              {categoryByJob.map((job) => (
+                <Card key={job._id} job={job}></Card>
+              ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="grid md:grid-cols-2 gap-3 ">
+              {categoryByJob.map((job) => (
+                <Card key={job._id} job={job}></Card>
+              ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 3</h2>
+            <div className="grid md:grid-cols-2 gap-3 ">
+              {categoryByJob.map((job) => (
+                <Card key={job._id} job={job}></Card>
+              ))}
+            </div>
           </TabPanel>
         </Tabs>
       </div>

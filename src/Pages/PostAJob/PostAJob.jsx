@@ -1,29 +1,52 @@
+import { useState } from "react";
 import useAuth from "../../Hook/useAuth";
+import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
 
 const PostAJob = () => {
   const { user } = useAuth();
-  //   console.log(user.email);
+  const axios = useAxios();
+  const [catErr, setCatErr] = useState("");
 
   const handlePostJob = (e) => {
     e.preventDefault();
     const from = e.target;
-    const employer = user?.email;
-    const jobTitle = from.jobTitle.value;
+    const employer_email = user?.email;
+    const job_title = from.jobTitle.value;
     const deadline = from.deadline.value;
     const category = from.category.value;
     const minimumSalary = from.minimumSalary.value;
     const maximumSalary = from.maximumSalary.value;
     const description = from.description.value;
 
-    console.log({
-      employer,
-      jobTitle,
+    const minimumSalaryNum = Number(minimumSalary);
+    const maximumSalaryNum = Number(maximumSalary);
+
+    if (minimumSalaryNum > maximumSalaryNum) {
+      return console.log("error");
+    }
+
+    if (category === "") {
+      return setCatErr(" Please select a category");
+    }
+
+    const postsCurrentTime = new Date().toDateString();
+    // console.log(postsCurrentTime);
+
+    const jobData = {
+     employer_email,
+     job_title,
       deadline,
       category,
       minimumSalary,
       maximumSalary,
       description,
+      postsCurrentTime,
+    };
+    // console.log(jobData);
+    axios.post("employer/postJob", jobData)
+    .then((res) => {
+      console.log(res);
     });
   };
 
@@ -68,7 +91,7 @@ const PostAJob = () => {
               <span className="label-text">Deadline</span>
             </label>
             <input
-              type="text"
+              type="date"
               name="deadline"
               placeholder="Deadline"
               className="input input-bordered"
@@ -77,7 +100,10 @@ const PostAJob = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Category</span>
+              <span className="label-text">
+                Category{" "}
+                <p className="text-red-400 underline font-semibold">{catErr}</p>
+              </span>
             </label>
             <select
               defaultValue={""}
@@ -87,9 +113,9 @@ const PostAJob = () => {
               <option value="" disabled>
                 Please select a category
               </option>
-              <option value="webDevelopment">Web Development</option>
-              <option value="digitalMarketing">Digital Marketing</option>
-              <option value="graphicsDesign">Graphics Design</option>
+              <option value="web-development">Web Development</option>
+              <option value="digital-marketing">Digital Marketing</option>
+              <option value="graphic-design">Graphics Design</option>
             </select>
           </div>
           <div className=" md:flex gap-1 md:gap-4">
@@ -127,11 +153,12 @@ const PostAJob = () => {
               className="textarea textarea-bordered"
               placeholder="Description"
               maxLength="500"
+              required
             ></textarea>
           </div>
 
-          <div className="form-control mt-6 border rounded-lg border-black ">
-            <button className="btn  bg-black font-bold text-xl text-white hover:text-black ">
+          <div className="form-control mt-6  rounded-lg ">
+            <button className="btn border-black border bg-black  font-bold text-xl text-white hover:text-black ">
               Post A Job
             </button>
           </div>

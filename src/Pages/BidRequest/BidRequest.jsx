@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import useAxios from "../../Hook/useAxios";
 import useAuth from "../../Hook/useAuth";
+import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
-import MyBidTableRow from "../../Components/MyBidTableRow/MyBidTableRow";
+import BidRequestTable from "../../Components/BidRequestTable";
 
-const MyBidsJob = () => {
+const BidRequest = () => {
   const axios = useAxios();
   const { user } = useAuth();
-  const [myBidsJobs, setMyBidsJobs] = useState([]);
-  // console.log(Object.keys(myBidsJobs).join(", "));
+  const [bidRequest, setBidRequest] = useState([]);
 
   useEffect(() => {
     axios.get(`buyer/myBids/?email=${user?.email}`).then((res) => {
-      setMyBidsJobs(res.data);
+      setBidRequest(res.data);
     });
   }, [axios, user]);
+
   return (
     <Container>
       <div>
@@ -25,16 +25,21 @@ const MyBidsJob = () => {
               <tr>
                 <th></th>
                 <th>Job Title</th>
-                <th>Email</th>
+                <th>Buyer Email</th>
                 <th>Deadline</th>
+                <th>Price</th>
                 <th>Status</th>
-                <th>Action</th>
+                {/* <th>Action</th> */}
               </tr>
             </thead>
             <tbody>
               <>
-                {myBidsJobs.map((job,index) => (
-                  <MyBidTableRow key={job._id} job={job} index={index}></MyBidTableRow>
+                {bidRequest.map((job, index) => (
+                  <BidRequestTable
+                    key={job._id}
+                    job={job}
+                    index={index}
+                  ></BidRequestTable>
                 ))}
               </>
             </tbody>
@@ -45,4 +50,4 @@ const MyBidsJob = () => {
   );
 };
 
-export default MyBidsJob;
+export default BidRequest;

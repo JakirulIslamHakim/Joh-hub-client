@@ -157,7 +157,7 @@ const JobDetail = () => {
                     required
                   />
                 </div>
-                <button className="btn w-full mt-3" type="submit">
+                <button className="btn w-full mt-3 "  disabled={employer_email === user.email ? true : false}  type="submit">
                   Bid on the project
                 </button>
               </form>

@@ -170,7 +170,7 @@ const UpdateJob = () => {
 
           <div className="form-control mt-6  rounded-lg ">
             <button className="btn border-black border bg-black  font-bold text-xl text-white hover:text-black ">
-              Post A Job
+              Update Job
             </button>
           </div>
         </form>

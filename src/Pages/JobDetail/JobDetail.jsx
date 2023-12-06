@@ -43,7 +43,7 @@ const JobDetail = () => {
   const handleBidProject = (event) => {
     event.preventDefault();
     const form = event.target;
-    const bidding_email = user && user?.email;
+    const buyer_email = user && user?.email;
     const bidding_price = form.bidding_price.value;
     const deadline = form.deadline.value;
 
@@ -51,12 +51,18 @@ const JobDetail = () => {
 
     const biddingInfo = {
       employer_email,
-      bidding_email,
+      buyer_email,
       bidding_price,
       deadline,
       biddingTime,
+      category,
+      job_title,
+      status: "Pending",
     };
-    console.log(biddingInfo);
+
+    axios.post("buyer/biddingJob", biddingInfo).then((res) => {
+      console.log(res);
+    });
   };
 
   return (

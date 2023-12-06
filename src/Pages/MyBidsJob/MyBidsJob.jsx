@@ -28,7 +28,7 @@ const MyBidsJob = () => {
                 <th>Email</th>
                 <th>Deadline</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>

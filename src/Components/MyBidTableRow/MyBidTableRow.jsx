@@ -1,6 +1,10 @@
+import useAxios from "../../Hook/useAxios";
+
 const MyBidTableRow = ({ job, index }) => {
+  const axios = useAxios();
+
   const {
-    id,
+    _id,
     employer_email,
     buyer_email,
     bidding_price,
@@ -11,6 +15,14 @@ const MyBidTableRow = ({ job, index }) => {
     status,
   } = job;
 
+  const handleComplete = (id) => {
+    console.log(id);
+    const updateStatus = { status: "Complete" };
+    axios.patch(`biddingJob/UpdateStatus/${id}`, updateStatus).then((res) => {
+      console.log(res);
+    });
+  };
+
   return (
     <>
       <tr>
@@ -20,7 +32,16 @@ const MyBidTableRow = ({ job, index }) => {
         <td>{deadline} </td>
         <td>{status} </td>
         <td>
-          <button className="btn btn-ghost btn-xs">Complete</button>
+          {status === "Progress" && (
+            <>
+              <button
+                onClick={() => handleComplete(_id)}
+                className="btn btn-ghost btn-xs"
+              >
+                Complete
+              </button>
+            </>
+          )}
         </td>
       </tr>
     </>

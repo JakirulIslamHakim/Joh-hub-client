@@ -1,6 +1,10 @@
+import useAxios from "../Hook/useAxios";
+
 const BidRequestTable = ({ job, index }) => {
+  const axios = useAxios();
+
   const {
-    id,
+    _id,
     employer_email,
     buyer_email,
     bidding_price,
@@ -10,6 +14,20 @@ const BidRequestTable = ({ job, index }) => {
     job_title,
     status,
   } = job;
+
+  const handleAccept = (id) => {
+    const updateStatus = { status: "Progress" };
+    axios.patch(`biddingJob/UpdateStatus/${id}`, updateStatus).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const handleReject = (id) => {
+    const updateStatus = { status: "Cancel" };
+    axios.patch(`biddingJob/UpdateStatus/${id}`, updateStatus).then((res) => {
+      console.log(res);
+    });
+  };
 
   return (
     <>
@@ -21,8 +39,23 @@ const BidRequestTable = ({ job, index }) => {
         <td>{bidding_price} $</td>
         <td>{status} </td>
         <td>
-          <button className="btn btn-ghost btn-xs">Accept</button>
-          <button className="btn btn-ghost btn-xs">Reject</button>
+          {
+            (status === "Pending" && (
+              <>
+                <button
+                  onClick={() => handleAccept(_id)}
+                  className="btn btn-ghost btn-xs border-2 border-black mr-3"
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={() => handleReject(_id)}
+                  className="btn btn-ghost btn-xs border-2 border-black"
+                >
+                  Reject
+                </button>
+              </>
+            ))}
         </td>
       </tr>
     </>

@@ -11,6 +11,7 @@ import MyPostedJobs from "../Pages/MyPostedJobs/MyPostedJobs";
 import UpdateJob from "../Pages/UpdateJob/UpdateJob";
 import MyBidsJob from "../Pages/MyBidsJob/MyBidsJob";
 import BidRequest from "../Pages/BidRequest/BidRequest";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,15 +29,27 @@ const router = createBrowserRouter([
       },
       {
         path: "addJob",
-        element: <PostAJob></PostAJob>,
+        element: (
+          <PrivateRoute>
+            <PostAJob></PostAJob>
+          </PrivateRoute>
+        ),
       },
       {
         path: "bidNow/:_id",
-        element: <JobDetail></JobDetail>,
+        element: (
+          <PrivateRoute>
+            <JobDetail></JobDetail>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myPostedJobs",
-        element: <MyPostedJobs></MyPostedJobs>,
+        element: (
+          <PrivateRoute>
+            <MyPostedJobs></MyPostedJobs>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myPostJob/updateJob/:id",
@@ -44,11 +57,19 @@ const router = createBrowserRouter([
       },
       {
         path: "myBidsJob",
-        element: <MyBidsJob></MyBidsJob>,
+        element: (
+          <PrivateRoute>
+            <MyBidsJob></MyBidsJob>
+          </PrivateRoute>
+        ),
       },
       {
         path: "bidRequest",
-        element: <BidRequest></BidRequest>,
+        element: (
+          <PrivateRoute>
+            <BidRequest></BidRequest>
+          </PrivateRoute>
+        ),
       },
     ],
   },

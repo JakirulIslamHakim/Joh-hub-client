@@ -38,7 +38,7 @@ const Navbar = () => {
         <NavLink to={"/login"}>Login</NavLink>
       </li>
       <li className="hidden lg:block">
-        <NavLink onClick={handleLogout} to={"/logout"}>
+        <NavLink onClick={handleLogout} >
           logout
         </NavLink>
       </li>

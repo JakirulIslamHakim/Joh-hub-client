@@ -39,13 +39,14 @@ const AuthProver = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      console.log(currentUser);
+      console.log(currentUser.email);
     });
     return () => unSubscribe();
   }, []);
 
   // logout user
   const logoutUser = () => {
+    setLoading(true)
     signOut(auth);
   };
 

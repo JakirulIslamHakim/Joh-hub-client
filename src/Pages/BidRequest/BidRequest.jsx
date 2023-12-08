@@ -10,10 +10,14 @@ const BidRequest = () => {
   const [bidRequest, setBidRequest] = useState([]);
 
   useEffect(() => {
-    axios.get(`buyer/myBids/?email=${user?.email}`).then((res) => {
+    axios.get(`employer/bidRequests?email=${user?.email}`).then((res) => {
       setBidRequest(res.data);
     });
   }, [axios, user]);
+
+  if(bidRequest.length === 0){
+    return <h2>Not request avilable</h2>
+  }
 
   return (
     <Container>

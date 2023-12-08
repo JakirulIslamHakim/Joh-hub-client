@@ -1,14 +1,17 @@
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/Image/login.json";
 import { FcGoogle } from "react-icons/fc";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import useAuth from "../../Hook/useAuth";
 
 const Login = () => {
   const { loginUser, googleLogin } = useAuth();
   const emailRef = useRef();
-  // console.log(emailRef.current.emailRef);
+  const location = useLocation();
+
+  console.log(location);
+
   useEffect(() => {
     emailRef.current.focus();
   }, []);

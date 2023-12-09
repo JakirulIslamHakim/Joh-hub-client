@@ -1,9 +1,10 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+// import "react-tabs/style/react-tabs.css";
 import Container from "../../utils/Container";
 import { useEffect, useState } from "react";
 import useAxios from "../../Hook/useAxios";
 import Card from "../../Components/Card/Card";
+import './tabStyle.css'
 
 const FindJob = () => {
   const [category, setCategory] = useState("");
@@ -15,7 +16,6 @@ const FindJob = () => {
   //     .then((res) => res.json())
   //     .then((data) => console.log(data));
   // }, [category]);
-
 
   useEffect(() => {
     if (category === "") {
@@ -45,9 +45,18 @@ const FindJob = () => {
         <Tabs>
           <TabList>
             <Tab onClick={() => setCategory("")}>All Job</Tab>
-            <Tab onClick={() => setCategory("web-development")}> Web Development </Tab>
-            <Tab onClick={() => setCategory("digital-marketing")}> Digital Marketing </Tab>
-            <Tab onClick={() => setCategory("graphic-design")}> Graphics Design </Tab>
+            <Tab onClick={() => setCategory("web-development")}>
+              {" "}
+              Web Development{" "}
+            </Tab>
+            <Tab onClick={() => setCategory("digital-marketing")}>
+              {" "}
+              Digital Marketing{" "}
+            </Tab>
+            <Tab onClick={() => setCategory("graphic-design")}>
+              {" "}
+              Graphics Design{" "}
+            </Tab>
           </TabList>
 
           <TabPanel>

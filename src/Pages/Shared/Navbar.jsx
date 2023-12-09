@@ -1,13 +1,17 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
-  const { logoutUser } = useAuth();
+  const { logoutUser, user } = useAuth();
+  const navigate = useNavigate();
+
+  // console.log(user);
 
   const handleLogout = () => {
     logoutUser()
       .then((result) => {
         console.log(result);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -34,14 +38,58 @@ const Navbar = () => {
       <li>
         <NavLink to={"/bidRequest"}>Bid Requests</NavLink>
       </li>
-      <li className="hidden lg:block">
+      {/* <li className="hidden lg:block">
         <NavLink to={"/login"}>Login</NavLink>
-      </li>
+      </li> */}
       <li className="hidden lg:block">
-        <NavLink onClick={handleLogout} >
-          logout
-        </NavLink>
+        {user ? (
+          <div className="dropdown dropdown-bottom dropdown-end rounded-full">
+            <div tabIndex={0} className=" ">
+              <div className="avatar">
+                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-72 py-4"
+            >
+              <li>
+                <a>
+                  {user?.displayName ? user.displayName : "unknown username"}
+                </a>
+              </li>
+              <li>
+                <a>{user?.email}</a>
+              </li>
+              <li>
+                <a
+                  className="btn  text-base flex items-center"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <NavLink to={"/login"}>Login</NavLink>
+        )}
       </li>
+      {/* <li className="hidden lg:block">
+        {user ? (
+          <p onClick={handleLogout}>logout</p>
+        ) : (
+          <NavLink to={"/login"}>Login</NavLink>
+        )}
+      </li> */}
     </>
   );
 
@@ -85,12 +133,53 @@ const Navbar = () => {
                 />
               </div>
               <ul className="pr-2">
-                <li className="lg:hidden btn text-base font-bold">
-                  <NavLink to={"/login"}>Loginxz</NavLink>
+                <li className="lg:hidden text-base font-bold">
+                  {user ? (
+                    <div className="dropdown dropdown-bottom dropdown-end">
+                      <div tabIndex={0} role="button" className=" ">
+                        <div className="avatar">
+                          <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img
+                              src={
+                                user?.photoURL
+                                  ? user?.photoURL
+                                  : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-64"
+                      >
+                        <li>
+                          <a>
+                            {user?.displayName
+                              ? user.displayName
+                              : "unknown username"}
+                          </a>
+                        </li>
+                        <li>
+                          <a>{user?.email}</a>
+                        </li>
+                        <li>
+                          <a
+                            className="btn w-full text-base flex items-center"
+                            onClick={handleLogout}
+                          >
+                            Logout
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <NavLink to={"/login"}>Login</NavLink>
+                  )}
                 </li>
               </ul>
               <div className="flex-none hidden lg:block">
-                <ul className="menu menu-horizontal text-base font-bold ">
+                <ul className="menu menu-horizontal text-base font-bold flex items-center">
                   {/* Navbar menu content here */}
                   {navLink}
                 </ul>

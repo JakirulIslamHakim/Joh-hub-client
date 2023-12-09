@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/Image/login.json";
 import { FcGoogle } from "react-icons/fc";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import useAuth from "../../Hook/useAuth";
 
@@ -9,8 +9,9 @@ const Login = () => {
   const { loginUser, googleLogin } = useAuth();
   const emailRef = useRef();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     emailRef.current.focus();
@@ -26,6 +27,7 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         console.log(err);
@@ -36,6 +38,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log(result);
+        navigate(location?.state ? location.state : "/", {replace : true});
       })
       .catch((err) => {
         console.log(err);

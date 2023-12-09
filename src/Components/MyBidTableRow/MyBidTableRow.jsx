@@ -16,7 +16,7 @@ const MyBidTableRow = ({ job, index }) => {
   } = job;
 
   const handleComplete = (id) => {
-    console.log(id);
+    // console.log(id);
     const updateStatus = { status: "Complete" };
     axios.patch(`biddingJob/UpdateStatus/${id}`, updateStatus).then((res) => {
       console.log(res);

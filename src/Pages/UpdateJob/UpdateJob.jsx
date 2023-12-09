@@ -58,7 +58,7 @@ const UpdateJob = () => {
     });
   };
 
-  console.log(category);
+  // console.log(category);
 
   return (
     <Container>

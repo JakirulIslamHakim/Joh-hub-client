@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import useAxios from "../../Hook/useAxios";
+import { FiEdit } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
 
 const MyPostCard = ({ post }) => {
   const axios = useAxios();
@@ -17,10 +19,9 @@ const MyPostCard = ({ post }) => {
   } = post;
 
   const handleDeleteJob = (id) => {
-    axios.delete(`/deleteJob/${id}`)
-      .then(res => {
-        console.log(res.data);
-      })
+    axios.delete(`/deleteJob/${id}`).then((res) => {
+      console.log(res.data);
+    });
     // console.log(id);
   };
 
@@ -41,15 +42,20 @@ const MyPostCard = ({ post }) => {
               Price : {min_price} - {max_price} $
             </p>
             <p>{description}</p>
-            <div className="card-actions justify-between pt-4">
+            <div className="card-actions justify-end pt-4">
               <NavLink to={`/myPostJob/updateJob/${_id}`}>
                 <button className="btn btn-primary btn-sm md:btn-md">
                   Update Post
+                  <FiEdit></FiEdit>
                 </button>
               </NavLink>
 
-              <button onClick={()=>handleDeleteJob(_id)} className="btn btn-primary btn-sm md:btn-md">
+              <button
+                onClick={() => handleDeleteJob(_id)}
+                className="btn btn-primary btn-sm md:btn-md"
+              >
                 Delete Post
+                <AiFillDelete></AiFillDelete>
               </button>
             </div>
           </div>

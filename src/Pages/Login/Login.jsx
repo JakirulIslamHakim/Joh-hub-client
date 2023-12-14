@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import useAuth from "../../Hook/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser, googleLogin } = useAuth();
@@ -25,23 +26,43 @@ const Login = () => {
 
     // login user
     loginUser(email, password)
-      .then((result) => {
+      .then(async (result) => {
         console.log(result.user);
+        await Swal.fire({
+          title: "Successfully login",
+          text: "Thank you for login",
+          icon: "success",
+        });
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         console.log(err);
+        Swal.fire({
+          title: "Login Error",
+          text: "Invalided email or password",
+          icon: "error",
+        });
       });
   };
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((result) => {
+      .then(async (result) => {
         console.log(result);
-        navigate(location?.state ? location.state : "/", {replace : true});
+        await Swal.fire({
+          title: "Successfully login",
+          text: "Thank you for login",
+          icon: "success",
+        });
+        navigate(location?.state ? location.state : "/", { replace: true });
       })
       .catch((err) => {
         console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       });
   };
 

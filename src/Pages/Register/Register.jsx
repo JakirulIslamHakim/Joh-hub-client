@@ -1,11 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import registerAnimation from "../../assets/Image/RegisterAnimation.json";
 import useAuth from "../../Hook/useAuth";
 import { useEffect, useRef } from "react";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { register } = useAuth();
+  const navigate = useNavigate();
   const nameRef = useRef();
 
   useEffect(() => {
@@ -25,6 +27,12 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         console.log(result);
+        navigate("/", { replace: true });
+        Swal.fire({
+          title: "Successfully Registration",
+          text: "Thank's you for Register",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);

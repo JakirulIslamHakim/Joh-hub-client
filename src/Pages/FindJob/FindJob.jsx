@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../Hook/useAxios";
 import Card from "../../Components/Card/Card";
 import './tabStyle.css'
+import Footer from "../Shared/Footer";
 
 const FindJob = () => {
   const [category, setCategory] = useState("");
@@ -40,6 +41,7 @@ const FindJob = () => {
   }, [category, axios]);
 
   return (
+    <div>
     <Container>
       <div>
         <Tabs>
@@ -91,6 +93,10 @@ const FindJob = () => {
         </Tabs>
       </div>
     </Container>
+    {
+      !category && <Footer></Footer>
+    }
+    </div>
   );
 };
 

@@ -1,22 +1,44 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
 import BidRequestTable from "../../Components/BidRequestTable";
+import { useQuery } from "@tanstack/react-query";
+// import { data } from "autoprefixer";
 
 const BidRequest = () => {
   const axios = useAxios();
   const { user } = useAuth();
-  const [bidRequest, setBidRequest] = useState([]);
+  // const [bidRequest, setBidRequest] = useState([]);
 
-  useEffect(() => {
-    axios.get(`employer/bidRequests?email=${user?.email}`).then((res) => {
-      setBidRequest(res.data);
-    });
-  }, [axios, user]);
+  // useEffect(() => {
+  //   axios.get(`employer/bidRequests?email=${user?.email}`).then((res) => {
+  //     setBidRequest(res.data);
+  //   });
+  // }, [axios, user]);
 
-  if(bidRequest.length === 0){
-    return <h2>Not request avilable</h2>
+  const {
+    data: bidRequest,
+    isError,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["bidRequest"],
+    queryFn: () => {
+      return axios.get(`employer/bidRequests?email=${user?.email}`);
+    },
+  });
+
+  if (isLoading) {
+    return;
+  }
+
+  if (bidRequest?.data?.length === 0) {
+    return (
+      <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
+        No one has bid on your job
+      </h2>
+    );
   }
 
   return (
@@ -38,7 +60,7 @@ const BidRequest = () => {
             </thead>
             <tbody>
               <>
-                {bidRequest.map((job, index) => (
+                {bidRequest?.data?.map((job, index) => (
                   <BidRequestTable
                     key={job._id}
                     job={job}

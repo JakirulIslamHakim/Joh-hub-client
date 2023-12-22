@@ -2,11 +2,14 @@ import { useState } from "react";
 import useAuth from "../../Hook/useAuth";
 import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const PostAJob = () => {
   const { user } = useAuth();
   const axios = useAxios();
   const [catErr, setCatErr] = useState("");
+  const navigate = useNavigate();
 
   const handlePostJob = (e) => {
     e.preventDefault();
@@ -44,20 +47,28 @@ const PostAJob = () => {
       postsCurrentTime,
     };
     // console.log(jobData);
-    axios.post("employer/postJob", jobData).then((res) => {
-      console.log(res);
+    axios.post("employer/postJob", jobData).then(async (res) => {
+      // console.log(res.data);
+      if (res?.data?.acknowledged) {
+        await Swal.fire({
+          title: "Successful",
+          text: "Your job post has been successfully",
+          icon: "success",
+        });
+        navigate("/myPostedJobs");
+      }
     });
   };
 
   return (
     <Container>
-      <div className="card shrink-0 w-full  shadow-2xl bg-base-100 border-2">
+      <div className="card shrink-0 w-full  shadow-2xl border-2 bg-[#52b78]">
         <form
           onSubmit={handlePostJob}
           className="card-body w-full md:w-3/4 mx-auto p-2 md:p-6"
         >
           <h2 className="text-3xl font-bold text-center italic">Post job</h2>
-          <div className="form-control">
+          <div className="form-control font-semibold">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
@@ -72,7 +83,7 @@ const PostAJob = () => {
               //   disabled
             />
           </div>
-          <div className="form-control">
+          <div className="form-control font-semibold">
             <label className="label">
               <span className="label-text">Job Title</span>
             </label>
@@ -85,7 +96,7 @@ const PostAJob = () => {
               required
             />
           </div>
-          <div className="form-control">
+          <div className="form-control font-semibold">
             <label className="label">
               <span className="label-text">Deadline</span>
             </label>
@@ -97,7 +108,7 @@ const PostAJob = () => {
               required
             />
           </div>
-          <div className="form-control">
+          <div className="form-control font-semibold">
             <label className="label">
               <span className="label-text">
                 Category{" "}
@@ -118,7 +129,7 @@ const PostAJob = () => {
             </select>
           </div>
           <div className=" md:flex gap-1 md:gap-4">
-            <div className="form-control md:w-1/2">
+            <div className="form-control font-semibold md:w-1/2">
               <label className="label">
                 <span className="label-text">Minimum Salary</span>
               </label>
@@ -130,7 +141,7 @@ const PostAJob = () => {
                 required
               />
             </div>
-            <div className="form-control md:w-1/2">
+            <div className="form-control font-semibold md:w-1/2">
               <label className="label">
                 <span className="label-text">Maximum Salary</span>
               </label>
@@ -143,7 +154,7 @@ const PostAJob = () => {
               />
             </div>
           </div>
-          <div className="form-control ">
+          <div className="form-control font-semibold ">
             <label className="label">
               <span className="label-text">Description</span>
             </label>
@@ -157,7 +168,7 @@ const PostAJob = () => {
             ></textarea>
           </div>
 
-          <div className="form-control mt-6  rounded-lg ">
+          <div className="form-control font-semibold mt-6  rounded-lg ">
             <button className="btn border-black border bg-black  font-bold text-xl text-white hover:text-black ">
               Post A Job
             </button>

@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
 import useAuth from "../../Hook/useAuth";
+import Swal from "sweetalert2";
 
 const JobDetail = () => {
   const [jobDetails, setJobDetails] = useState({});
   const { _id } = useParams();
   const axios = useAxios();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -60,8 +62,16 @@ const JobDetail = () => {
       status: "Pending",
     };
 
-    axios.post("buyer/biddingJob", biddingInfo).then((res) => {
+    axios.post("buyer/biddingJob", biddingInfo).then(async (res) => {
       console.log(res);
+      if (res?.data?.acknowledged) {
+        await Swal.fire({
+          title: "Successful",
+          text: "You have successfully bid",
+          icon: "success",
+        });
+        navigate("/myBidsJob");
+      }
     });
   };
 
@@ -99,9 +109,10 @@ const JobDetail = () => {
             </div>
             {/*  form section */}
             <div className="p-2">
-              <h2 className="text-2xl font-semibold text-center">
-                place your bid
+              <h2 className="text-2xl font-semibold text-center ">
+                Place your bid
               </h2>
+              <hr className="border-b-2 rounded-full border-gray-300 w-1/3 mx-auto " />
               <form onSubmit={handleBidProject}>
                 <div className="form-control">
                   <label className="label">
@@ -157,7 +168,11 @@ const JobDetail = () => {
                     required
                   />
                 </div>
-                <button className="btn w-full mt-3 "  disabled={employer_email === user.email ? true : false}  type="submit">
+                <button
+                  className="btn w-full mt-3 "
+                  disabled={employer_email === user.email ? true : false}
+                  type="submit"
+                >
                   Bid on the project
                 </button>
               </form>

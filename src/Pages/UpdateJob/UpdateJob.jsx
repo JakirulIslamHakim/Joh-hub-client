@@ -1,14 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxios from "../../Hook/useAxios";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hook/useAuth";
 import Container from "../../utils/Container";
+import Swal from "sweetalert2";
 
 const UpdateJob = () => {
   const { id } = useParams();
   const axios = useAxios();
   const { user } = useAuth();
   const [currentJobInfo, setCurrentJobInfo] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -53,8 +55,16 @@ const UpdateJob = () => {
       description,
     };
 
-    axios.put(`updateJob/${_id}`, updateJob).then((res) => {
-      console.log(res.data);
+    axios.put(`updateJob/${_id}`, updateJob).then(async(res) => {
+      // console.log(res.data);
+      if (res.data.modifiedCount) {
+       await Swal.fire({
+          title: "Successful",
+          text: "Your job post has been updated",
+          icon: "success",
+        });
+      }
+      navigate("/myPostedJobs", { replace: true });
     });
   };
 

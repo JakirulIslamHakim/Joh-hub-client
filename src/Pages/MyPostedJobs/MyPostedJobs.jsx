@@ -30,7 +30,7 @@ const MyPostedJobs = () => {
     },
   });
   if (isError) {
-    return <p>{error.message}</p>;
+    return <p className="text-center text-xl text-red-700 mt-14 font-semibold">{error.message}</p>;
   }
 
   if (isLoading) {

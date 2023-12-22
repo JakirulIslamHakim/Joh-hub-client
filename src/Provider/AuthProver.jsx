@@ -8,12 +8,14 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../../config/fitebase.config";
+import useAxios from "../Hook/useAxios";
 
 export const AuthContext = createContext();
 
 const AuthProver = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axios = useAxios();
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -38,15 +40,27 @@ const AuthProver = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+
+      const userEmail = currentUser?.email || user?.email;
+
+      if (userEmail) {
+        axios.post("auth/accessToken", { email: userEmail }).then((res) => {
+          // console.log(res);
+        });
+      } else {
+        axios.get("auth/logout").then((res) => {
+          // console.log(res);
+        });
+      }
       setLoading(false);
       // console.log(currentUser.email);
     });
     return () => unSubscribe();
-  }, []);
+  }, [user, axios]);
 
   // logout user
   const logoutUser = () => {
-    setLoading(true)
+    setLoading(true);
     signOut(auth);
   };
 
@@ -60,7 +74,11 @@ const AuthProver = ({ children }) => {
     logoutUser,
   };
 
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={values}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProver;

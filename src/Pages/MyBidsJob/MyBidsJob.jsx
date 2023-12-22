@@ -4,6 +4,7 @@ import useAuth from "../../Hook/useAuth";
 import Container from "../../utils/Container";
 import MyBidTableRow from "../../Components/MyBidTableRow/MyBidTableRow";
 import { useQuery } from "@tanstack/react-query";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const MyBidsJob = () => {
   const axios = useAxios();
@@ -29,7 +30,22 @@ const MyBidsJob = () => {
     },
   });
 
-  if (isLoading) return;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center mt-10 md:mt-40">
+        <FidgetSpinner
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+          ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+          backgroundColor="#F4442E"
+        />
+      </div>
+    );
+  }
   if (myBidsJobs?.data?.length === 0) {
     return (
       <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
@@ -38,14 +54,22 @@ const MyBidsJob = () => {
     );
   }
 
+  if (isError) {
+    return (
+      <p className="text-center text-xl text-red-700 mt-14 font-semibold">
+        {error.message}
+      </p>
+    );
+  }
+
   return (
     <Container>
-      <div>
+      <div className="font-bold">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead>
-              <tr>
+            <thead >
+              <tr className="font-bold">
                 <th></th>
                 <th>Job Title</th>
                 <th>Email</th>

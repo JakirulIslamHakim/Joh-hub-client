@@ -4,6 +4,7 @@ import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
 import BidRequestTable from "../../Components/BidRequestTable";
 import { useQuery } from "@tanstack/react-query";
+import { FidgetSpinner } from "react-loader-spinner";
 // import { data } from "autoprefixer";
 
 const BidRequest = () => {
@@ -30,7 +31,20 @@ const BidRequest = () => {
   });
 
   if (isLoading) {
-    return;
+    return (
+      <div className="flex justify-center mt-10 md:mt-40">
+        <FidgetSpinner
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+          ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+          backgroundColor="#F4442E"
+        />
+      </div>
+    );
   }
 
   if (bidRequest?.data?.length === 0) {
@@ -38,6 +52,14 @@ const BidRequest = () => {
       <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
         No one has bid on your job
       </h2>
+    );
+  }
+
+  if (isError) {
+    return (
+      <p className="text-center text-xl text-red-700 mt-14 font-semibold">
+        {error.message}
+      </p>
     );
   }
 

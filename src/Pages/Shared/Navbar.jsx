@@ -179,7 +179,7 @@ const Navbar = () => {
                 </li>
               </ul>
               <div className="flex-none hidden lg:block">
-                <ul className="menu menu-horizontal text-base font-bold flex items-center">
+                <ul className="menu menu-horizontal text-base font-bold flex  items-center">
                   {/* Navbar menu content here */}
                   {navLink}
                 </ul>

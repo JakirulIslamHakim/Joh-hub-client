@@ -22,3 +22,49 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# find job data fetching use tanstack query
+
+import { useEffect } from 'react';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+
+const fetchData = async (category) => {
+  if (category === "") {
+    const response = await axios.get(`/categories`);
+    return response.data;
+  } else {
+    const response = await axios.get(`/categories/${category}`);
+    return response.data;
+  }
+};
+
+const YourComponent = ({ category }) => {
+  const { data: categoryByJob, isLoading, isError, error } = useQuery(['categoryByJob', category], () => fetchData(category));
+
+  useEffect(() => {
+    // You can perform additional actions when the data changes, if needed
+    // For example, setCategoryByJob(categoryByJob);
+  }, [categoryByJob]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  // Your component JSX here, using categoryByJob
+
+  return (
+    <div>
+      {/* Your component content */}
+    </div>
+  );
+};
+
+export default YourComponent;
+

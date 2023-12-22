@@ -52,12 +52,12 @@ const Register = () => {
           </div>
         </div>
 
-        <div className="card shrink-0  max-w-sm shadow-2xl bg-base-100 flex-1 lg:w-1/2">
+        <div className="card shrink-0  max-w-sm shadow-2xl  flex-1 lg:w-1/2 bg-[#52b788]">
           <form onSubmit={handleRegister} className="card-body">
             <h1 className="text-3xl font-semibold text-center mb-5 pb-4 italic">
               Please Register
             </h1>
-            <div className="form-control">
+            <div className="form-control font-semibold">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -70,7 +70,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control font-semibold">
               <label className="label">
                 <span className="label-text">Image Url</span>
               </label>
@@ -82,7 +82,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control font-semibold">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -94,7 +94,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control font-semibold">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>

@@ -9,8 +9,8 @@ const HomePage = () => {
         <div>
             {/* slider */}
             <Home></Home>
-            <WorkYourWay></WorkYourWay>
             <NavigateJob></NavigateJob>
+            <WorkYourWay></WorkYourWay>
             <Feedback></Feedback>
             <Footer></Footer>
         </div>

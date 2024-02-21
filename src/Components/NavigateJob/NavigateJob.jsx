@@ -15,7 +15,7 @@ const NavigateJob = () => {
             data-aos-delay="20"
             data-aos-duration="1000"
           >
-            <h2 className="text-4xl font-bold  ">
+            <h2 className="text-2xl md:text-4xl font-bold  ">
               " Discover Your Next Opportunity "
             </h2>
           </div>
@@ -27,7 +27,7 @@ const NavigateJob = () => {
           >
             <NavLink
               to={"/findJob"}
-              className="btn border-white border-2 text-lg mt-7 font-bold text-white bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
+              className="btn btn-sm md:btn-md border-white border-2 text-base md:text-lg mt-7 font-bold text-white bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
             >
               Get Started Now
             </NavLink>

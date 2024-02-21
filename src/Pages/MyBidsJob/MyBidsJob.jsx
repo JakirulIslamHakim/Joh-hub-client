@@ -5,6 +5,7 @@ import Container from "../../utils/Container";
 import MyBidTableRow from "../../Components/MyBidTableRow/MyBidTableRow";
 import { useQuery } from "@tanstack/react-query";
 import { FidgetSpinner } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const MyBidsJob = () => {
   const axios = useAxios();
@@ -48,9 +49,14 @@ const MyBidsJob = () => {
   }
   if (myBidsJobs?.data?.length === 0) {
     return (
-      <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
-        You have not bid on any jobs
-      </h2>
+      <div>
+        <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
+          You have not bid on any jobs
+          <Helmet>
+            <title>Job Hub | My Bids</title>
+          </Helmet>
+        </h2>
+      </div>
     );
   }
 
@@ -64,11 +70,14 @@ const MyBidsJob = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Job Hub | My Bids  </title>
+      </Helmet>
       <div className="font-bold">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead >
+            <thead>
               <tr className="font-bold">
                 <th></th>
                 <th>Job Title</th>

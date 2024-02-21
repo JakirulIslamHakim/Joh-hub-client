@@ -46,10 +46,10 @@ const Feedback = () => {
   return (
     <Container>
       <div className="mt-10 mb-6">
-        <h2 className="text-4xl font-bold text-center ">
+        <h2 className="text-2xl md:text-4xl font-bold text-center ">
           What client say about us !
         </h2>
-        <h4 className="text-xl font-semibold text-center mt-2 ">Some client messages are displayed  </h4>
+        <h4 className=" md:text-xl font-semibold text-center mt-2 ">Some client messages are displayed  </h4>
       </div>
 
       <Marquee pauseOnHover={true} speed={30}>

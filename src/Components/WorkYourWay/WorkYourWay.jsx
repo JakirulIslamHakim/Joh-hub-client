@@ -8,7 +8,7 @@ const WorkYourWay = () => {
     <div className="bg-base-200 py-4 md:p-10">
       <Container>
         <div className="mt-10 md:my-10">
-          <h2 className="text-4xl font-bold text-center ">Work Your way</h2>{" "}
+          <h2 className="text-2xl md:text-4xl font-bold text-center ">Work Your way</h2>{" "}
           <hr className="border-b-2 border-black w-1/6 lg:w-[10%] mx-auto mt-3" />
         </div>
         <div className=" flex flex-col-reverse md:flex-row items-center">

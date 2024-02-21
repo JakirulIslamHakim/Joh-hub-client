@@ -7,13 +7,14 @@ import Card from "../../Components/Card/Card";
 import "./tabStyle.css";
 import Footer from "../Shared/Footer";
 import FindJobSkeleton from "../../Components/Skeleton/FindJobSkeleton";
+import { Helmet } from "react-helmet";
 
 const FindJob = () => {
   const [category, setCategory] = useState("");
   const [categoryByJob, setCategoryByJob] = useState([]);
   const axios = useAxios();
   const [isLoading, setIsLoading] = useState(true);
-  // console.log(isLoading);
+
 
   // useEffect(() => {
   //   fetch(`http://localhost:5000/api/v1/categories/${category}`)
@@ -69,6 +70,9 @@ const FindJob = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Job Hub | Find Job</title>
+      </Helmet>
       <Container>
         <div>
           <Tabs>

@@ -4,6 +4,7 @@ import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const PostAJob = () => {
   const { user } = useAuth();
@@ -62,12 +63,15 @@ const PostAJob = () => {
 
   return (
     <Container>
+        <Helmet>
+        <title>Job Hub | Post Job</title>
+      </Helmet>
       <div className="card shrink-0 w-full  shadow-2xl border-2 bg-[#52b78]">
         <form
           onSubmit={handlePostJob}
           className="card-body w-full md:w-3/4 mx-auto p-2 md:p-6"
         >
-          <h2 className="text-3xl font-bold text-center italic">Post job</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center italic">Post job</h2>
           <div className="form-control font-semibold">
             <label className="label">
               <span className="label-text">Email</span>
@@ -169,7 +173,7 @@ const PostAJob = () => {
           </div>
 
           <div className="form-control font-semibold mt-6  rounded-lg ">
-            <button className="btn border-black border bg-black  font-bold text-xl text-white hover:text-black ">
+            <button className="btn border-black border bg-black  font-bold text-base md:text-xl text-white hover:text-black ">
               Post A Job
             </button>
           </div>

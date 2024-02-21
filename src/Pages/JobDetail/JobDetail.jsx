@@ -4,6 +4,7 @@ import useAxios from "../../Hook/useAxios";
 import Container from "../../utils/Container";
 import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const JobDetail = () => {
   const [jobDetails, setJobDetails] = useState({});
@@ -77,12 +78,16 @@ const JobDetail = () => {
 
   return (
     <div>
+      {" "}
+      <Helmet>
+        <title>Job Hub | Bid Now</title>
+      </Helmet>
       <Container>
         <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
           <div className="card card-compact md:p-5 border-4  bg-base-100 shadow-xl">
             <div className="card-body">
               <div>
-                <h2 className="card-title flex justify-center border-b-2 pb-3 text-2xl">
+                <h2 className="card-title flex justify-center border-b-2 pb-3 text-xl md:text-2xl">
                   Job Details {category}
                 </h2>
               </div>

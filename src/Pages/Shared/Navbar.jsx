@@ -9,9 +9,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logoutUser()
-      .then((result) => {
-        console.log(result);
-        navigate("/");
+      .then(() => {
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -69,14 +68,14 @@ const Navbar = () => {
               <li>
                 <a>{user?.email}</a>
               </li>
-              <li>
-                <a
+              <>
+                <li
                   className="btn  text-base flex items-center"
                   onClick={handleLogout}
                 >
                   Logout
-                </a>
-              </li>
+                </li>
+              </>
             </ul>
           </div>
         ) : (

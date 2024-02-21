@@ -5,6 +5,7 @@ import Container from "../../utils/Container";
 import MyPostCard from "../../Components/Card/MyPostCard";
 import { useQuery } from "@tanstack/react-query";
 import MyPostSkeleton from "../../Components/Skeleton/MyPostSkeleton";
+import { Helmet } from "react-helmet";
 
 const MyPostedJobs = () => {
   const axios = useAxios();
@@ -49,6 +50,9 @@ const MyPostedJobs = () => {
 
   return (
     <Container>
+        <Helmet>
+        <title>Job Hub | My Posted Job</title>
+      </Helmet>
       <div className="">
         <h3 className="text-2xl  md:text-4xl font-bold text-center">
           Your posted jobs

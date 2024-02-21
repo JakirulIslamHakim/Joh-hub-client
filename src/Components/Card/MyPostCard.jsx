@@ -65,7 +65,7 @@ const MyPostCard = ({ post }) => {
               <span className="text-base"> Price :</span>
               {min_price} - {max_price} $
             </p>
-            <p>{description}</p>
+            <p> <span className="text-base"> Job Des. :</span> {description}</p>
             <div className="card-actions justify-end pt-4">
               <NavLink to={`/myPostJob/updateJob/${_id}`}>
                 <button className="btn btn-primary btn-sm md:btn-md">

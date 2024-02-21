@@ -5,6 +5,7 @@ import Container from "../../utils/Container";
 import BidRequestTable from "../../Components/BidRequestTable";
 import { useQuery } from "@tanstack/react-query";
 import { FidgetSpinner } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 // import { data } from "autoprefixer";
 
 const BidRequest = () => {
@@ -49,9 +50,15 @@ const BidRequest = () => {
 
   if (bidRequest?.data?.length === 0) {
     return (
-      <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
-        No one has bid on your job
-      </h2>
+      <div>
+        {" "}
+        <Helmet>
+          <title>Job Hub | Bid Request</title>
+        </Helmet>
+        <h2 className="text-xl font-semibold text-center mt-14 md:mt-52">
+          No one has bid on your job
+        </h2>
+      </div>
     );
   }
 
@@ -65,7 +72,10 @@ const BidRequest = () => {
 
   return (
     <Container>
-      <div>
+      <Helmet>
+        <title>Job Hub | Bid Request</title>
+      </Helmet>
+      <div className="font-bold">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

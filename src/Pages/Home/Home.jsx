@@ -43,26 +43,29 @@ const Home = () => {
             <img className="w-full" src="https://i.ibb.co/PNYnWdc/computer-2982270-640-4.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-full" src="https://i.ibb.co/PNYnWdc/computer-2982270-640-4.jpg" />
+            <img className="w-full" src="https://i.ibb.co/JFyMxCm/computer-1185626-640.jpg" />
           </SwiperSlide>
           <SwiperSlide>
+            <img className="w-full" src="https://pixel77.com/wp-content/uploads/2018/10/1934823-e1540532501723.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full" src="https://i.ibb.co/c2zv3NK/office-620822-1280.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full" src="https://media.istockphoto.com/id/1435220822/photo/african-american-software-developer.jpg?s=2048x2048&w=is&k=20&c=d1UoAVikBSCBACAx6VowheFeZQbmJymYjqQKQeK48jI=" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full" src="https://i.ibb.co/7GndCnS/code-1076536-640.jpg" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full" src="https://i.ibb.co/JFyMxCm/computer-1185626-640.jpg" />
+          </SwiperSlide>
+          {/* <SwiperSlide>
             <img className="w-full" src="https://i.ibb.co/3791ST2/download.jpg" />
           </SwiperSlide>
           <SwiperSlide>
             <img className="w-full" src="https://i.ibb.co/3791ST2/download.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-full" src="https://i.ibb.co/3791ST2/download.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-full" src="https://i.ibb.co/3791ST2/download.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-full" src="https://i.ibb.co/3791ST2/download.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-full" src="https://i.ibb.co/3791ST2/download.jpg" />
-          </SwiperSlide>
+          </SwiperSlide> */}
 
           <div className="autoplay-progress" slot="container-end">
             <svg viewBox="0 0 48 48" ref={progressCircle}>

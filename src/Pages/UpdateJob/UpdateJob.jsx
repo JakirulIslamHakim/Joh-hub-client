@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hook/useAuth";
 import Container from "../../utils/Container";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UpdateJob = () => {
   const { id } = useParams();
@@ -55,10 +56,10 @@ const UpdateJob = () => {
       description,
     };
 
-    axios.put(`updateJob/${_id}`, updateJob).then(async(res) => {
+    axios.put(`updateJob/${_id}`, updateJob).then(async (res) => {
       // console.log(res.data);
       if (res.data.modifiedCount) {
-       await Swal.fire({
+        await Swal.fire({
           title: "Successful",
           text: "Your job post has been updated",
           icon: "success",
@@ -72,12 +73,18 @@ const UpdateJob = () => {
 
   return (
     <Container>
+      {" "}
+      <Helmet>
+        <title>Job Hub | Update </title>
+      </Helmet>
       <div>
         <form
           onSubmit={handleUpdateJob}
           className="card-body w-full md:w-3/4 mx-auto p-2 md:p-6 "
         >
-          <h2 className="text-3xl font-bold text-center italic ">Update Job</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center italic ">
+            Update Job
+          </h2>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -179,7 +186,7 @@ const UpdateJob = () => {
           </div>
 
           <div className="form-control mt-6  rounded-lg ">
-            <button className="btn border-black border bg-black  font-bold text-xl text-white hover:text-black ">
+            <button className="btn border-black border bg-black  font-bold text-base md:text-xl text-white hover:text-black ">
               Update Job
             </button>
           </div>

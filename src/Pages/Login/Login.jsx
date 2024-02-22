@@ -79,7 +79,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="card shrink-0  max-w-sm shadow-2xl flex-1 lg:w-1/2 bg-[#52b788] ">
+        <div className="card shrink-0  max-w-sm shadow-2xl flex-1 lg:w-1/2 bg-base-100">
           <form onSubmit={handleLogin} className="card-body">
             <h1 className="text-3xl font-semibold text-center mb-5 pb-4 italic">
               Please Login
@@ -132,10 +132,10 @@ const Login = () => {
                   <span className="text-3xl">
                     <FcGoogle />
                   </span>{" "}
-                  Goggle
+                  Google
                 </button>
               </div>
-              <p className="text-xl font-semibold text-center">
+              <p className="font-semibold text-center">
                 New Here ? Please{" "}
                 <NavLink className={"underline text-blue-700"} to={"/register"}>
                   Register

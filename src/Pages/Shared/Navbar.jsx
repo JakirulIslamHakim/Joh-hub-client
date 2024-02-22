@@ -201,9 +201,18 @@ const Navbar = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-72 min-h-full bg-base-200 text-base font-bold text-center ">
+        <ul className="menu p-4 w-64 min-h-full bg-base-200 text-base font-bold text-center ">
           {/* Sidebar content here */}
-          {navLink}
+          <div>
+            <div className="px-2 mx-2  w-20 lg:w-24 py-5  ">
+              <img
+                className="w-full rounded-full lg:ml-6"
+                src="https://i.ibb.co/G95bnRK/Screenshot-29.png"
+                alt=""
+              />
+            </div>
+            {navLink}
+          </div>
         </ul>
       </div>
     </div>

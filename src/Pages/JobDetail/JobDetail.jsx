@@ -83,8 +83,8 @@ const JobDetail = () => {
         <title>Job Hub | Bid Now</title>
       </Helmet>
       <Container>
-        <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
-          <div className="card card-compact md:p-5 border-4  bg-base-100 shadow-xl">
+        <div className="w-full md:w-3/4 lg:w-1/2 mx-auto ">
+          <div className="card card-compact md:p-5 border-4  bg-base-200 shadow-xl">
             <div className="card-body">
               <div>
                 <h2 className="card-title flex justify-center border-b-2 pb-3 text-xl md:text-2xl">
